@@ -1,0 +1,53 @@
+GridPane {
+    -fx-background-color: #FFF4FF;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+TextField {
+    -fx-background-color: #e5e4e2;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 5px;
+}
+
+Button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-background-color: #ff9191;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+#btncree, #btnCreerContact, #btnValiderInfo {
+    -fx-background-color: #76adea;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 3, 0.5, 0, 0);
+    -fx-font-weight: bold;
+}
+
+#btncree:hover, #btnCreerContact:hover, #btnValiderInfo:hover {
+    -fx-background-color: #3b5998;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 10, 0.5, 0, 0);
+    -fx-text-fill: white;
+}
+
+#btnannuler {
+    -fx-background-color: #ff9191;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 3, 0.5, 0, 0);
+    -fx-font-weight: bold;
+}
+
+#btnannuler:hover {
+    -fx-background-color: red;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 10, 0.5, 0, 0);
+    -fx-text-fill: white;
+}
+

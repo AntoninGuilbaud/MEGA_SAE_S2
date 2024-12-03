@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="45.0" minHeight="33.0" prefHeight="45.0" />
+  </rowConstraints>
+   <children>
+      <Label text="Nom" GridPane.halignment="CENTER" />
+      <Label text="Prix" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Label text="Heure passage" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Label text="Genre" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+       <Button fx:id="btncree" mnemonicParsing="false" onAction="#btnValiderGroupeMusiqueOnClick" text="Créer" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+       <TextField fx:id="tfGPNom" maxWidth="200.0" promptText=" " GridPane.columnIndex="1" />
+      <TextField fx:id="tfGPPrix" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="tfGPHeure" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+       <Button fx:id="btnannuler" mnemonicParsing="false" onAction="#btnCloseOnClick" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <ChoiceBox fx:id="cbGPGenre" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label text="Durée" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <TextField fx:id="tfGPDuree" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   </children>
+</GridPane>

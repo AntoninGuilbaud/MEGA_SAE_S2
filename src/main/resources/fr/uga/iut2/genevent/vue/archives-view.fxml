@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="maininterface" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox fx:id="barrelateral" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
+            <children>
+                <VBox fx:id="logo" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <ImageView fx:id="logo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                            <VBox.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </VBox.margin></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnMariagesOnClick" text="Mariages">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnCalendarOnClick" text="Calendrier">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin>
+
+                        </Button>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnArchivesOnClick" text="Archives">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin></Button>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnContactOnClick" text="Contact">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin></Button>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnInfoOnClick" text="Mes infos">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin></Button>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="517.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="barrehautLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Archives" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+                <GridPane fx:id="gridPaneArchives" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            </children>
+        </VBox>
+    </children>
+</HBox>

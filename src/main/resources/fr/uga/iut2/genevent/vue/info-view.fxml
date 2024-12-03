@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="maininterface" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox fx:id="barrelateral" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
+            <children>
+                <VBox fx:id="logo" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <ImageView fx:id="logo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                            <VBox.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </VBox.margin></ImageView>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnMariagesOnClick" text="Mariages">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnCalendarOnClick" text="Calendrier">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin>
+
+                        </Button>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnArchivesOnClick" text="Archives">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin></Button>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnContactOnClick" text="Contact">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin></Button>
+                        <Button fx:id="buttonmain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnInfoOnClick" text="Mes infos">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                            </VBox.margin></Button>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+        <VBox fx:id="vboxmaininfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="517.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="barrehautLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Mes infos" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+            <VBox fx:id="vboxinfo" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="Nom :">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin></Label>
+                        <TextField fx:id="tfInfosNom" editable="false">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin></TextField>
+                     </children></HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Prénom :">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin></Label>
+                        <TextField fx:id="tfInfosPrenom" editable="false">
+                           <HBox.margin>
+                              <Insets left="22.0" />
+                           </HBox.margin></TextField>
+                     </children></HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="labelSiretInfo" text="Siret : ">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfInfosSiret">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#btnModifierOnClick" text="Modifier" />
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox fx:id="vboxinfo" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="labelTelInfo" text="Numéro de téléphone :">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfInfosTel" editable="false">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#btnModifierOnClick" text="Modifier" />
+                     </children></HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="labelMailInfo" text="Mail : ">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfInfosMail" editable="false">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="115.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#btnModifierOnClick" text="Modifier" />
+                     </children></HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox fx:id="vboxinfo" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="labelMdpInfo" text="Mot de passe :">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <PasswordField fx:id="pwdFInfosMdp">
+                           <HBox.margin>
+                              <Insets bottom="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </PasswordField>
+                        <Button mnemonicParsing="false" onAction="#btnModifierOnClick" text="Modifier">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin></Button>
+                     </children></HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+        </VBox>
+    </children>
+</HBox>

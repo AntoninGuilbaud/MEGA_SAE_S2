@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.*?>
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label text="Nom" GridPane.halignment="CENTER" />
+        <Label text="Adresse" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <Label text="Prix" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <Label text="Capacité" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Label text="logement" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+        <TextField fx:id="tfLNom" maxWidth="200.0" GridPane.columnIndex="1" />
+        <TextField fx:id="tfLAdresse" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="tfLPrix" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="tfLCapacite" layoutX="310.0" layoutY="197.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <ToggleSwitch fx:id="tsLLogement" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button fx:id="btncree" mnemonicParsing="false" onAction="#btnValiderLieuxOnClick" text="Créer" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Button fx:id="btnannuler" mnemonicParsing="false" onAction="#btnCloseOnClick" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+    </children>
+</GridPane>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff4ff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Ajouter un nouveau contact">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </Label>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="labelNewContactNom" text="Nom :" />
+            <Label fx:id="labelNewContactMail" text="Mail : " GridPane.rowIndex="1" />
+            <Label fx:id="labelNewContactTel" text="Numéro de téléphone :" GridPane.rowIndex="2" />
+            <Label fx:id="labelNewContactProfession" text="Profession :" GridPane.rowIndex="3" />
+            <Label fx:id="labelNewContactHonoraires" text="Honoraires :" GridPane.rowIndex="4" />
+            <TextField fx:id="tfNewContactNom" GridPane.columnIndex="1" />
+            <TextField fx:id="tfNewContactMail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfNewContactTel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="tfNewContactProfession" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="tfNewContactHonoraires" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+         </padding>
+      </GridPane>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button fx:id="btnCreerContact" mnemonicParsing="false" onAction="#btnCreerContactOnAction" text="Créer" />
+            <Button fx:id="btnannuler" mnemonicParsing="false" onAction="#btnAnnulerContactOnAction" text="Annuler" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

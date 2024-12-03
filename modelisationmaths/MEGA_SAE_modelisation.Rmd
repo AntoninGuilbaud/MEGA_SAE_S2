@@ -1,0 +1,236 @@
+---
+title: "Rendu Mega_Sae Méthodes Numériques"
+author: "Adrien - Antonin - Vladimir - Tristan - Titouan (groupe B2)"
+date: "13/05/24"
+output:
+  word_document: default
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+Utiliser des libraries R selon votre problèeme par exemple : ompr, boot, . . .
+```{r setup, include=FALSE}
+library(ROI.plugin.glpk)
+library(ompr)
+library(ompr.roi)
+library(boot)
+library(ggplot2)
+```
+
+# Fonction linéaire sous contraintes linéaires
+
+## Introduction
+
+En rapport avec notre sujet de MEGA - SAE2.01234 : Conception et développement d’un outil d’aide et de pilotage à destination d’organisateurs de mariage (entreprise professionnel), nous allons chercher à optimiser le nombre de mariages de type A et B qu'un weeding planner peut organiser sur une année afin de maximiser le profit, tout en respectant certaines contraintes sur les ressources disponibles.
+
+Nous allons ici, procéder à l'optimisation mathématique sous contraintes, mettant en oeuvre plusieurs fonctions linéaire. En effet, la fonction à maximiser (le profit total) ainsi que les contraintes définies (nombre de jours, nombre de logements, nombre d'intervenants) sont toutes des fonctions linéaires des variables de décision xA et xB (relatif aux mariages de type A et B).
+
+Pour répondre le plus possible à la consigne, ce document est divisé en 3 partie : 
+  - Partie modélisation : Définition de la fonction à optimiser ainsi que les variables
+  - Partie modélisation : Définition des contraintes sur les variables
+  - Partie résolution : Résolution de notre problème (partie mathématiques et implémentation informatique)
+
+Enfin, nous commenterons et interpréterons la solution obtenue afin de valider la pertinence de notre approche pour répondre à la problématique initiale.
+
+
+## Modélisation - Définition de la fonction à optimiser
+
+Imaginons que nous sommes un Weeding Planner (organisateur de mariage) et que nous proposons deux types de mariage, A et B, avec différents coûts et exigences en ressources. Notre Weeding Planner doit s'organiser pour plannifier l'année prochaine à venir, et comme il est à son compte, il souhaite maximiser son profit.
+
+Ainsi, nous cherchons à maximiser le profit total en organisant un certain nombre de mariage de type A et B.
+Nous définissons les variables suivantes :
+  - xA : nombre de mariage de type A à organiser
+  - xB : nombre de mariage de type B à organiser
+
+Un mariage de type A coûterait 9500€ et serait accessible à un public plus populaire, tandis qu’un mariage de type B coûterait environ 14000€, soit un mariage assez coûteux et accessible à un public plus aisé.
+
+La fonction à maximiser serait donc la suivante :
+$$
+9500\times X_a + 14000\times X_b
+$$
+
+```{r}
+# Fonction objective
+ggplot(data.frame(x = c(-50, 60)), aes(x)) +
+  stat_function(fun = function(x) -9500/14000*x) +
+  geom_vline(xintercept = 0, color = "black", alpha= 0.2) + 
+  geom_hline(yintercept = 0, color = "black", alpha= 0.2) +  
+  labs(title = "Fonction objective") +  # Ajout du titre
+  theme_minimal()
+```
+
+## Modélisation - Définition des contraintes
+
+Maintenant que la fonction objective est définie, nous pouvons exprimer les contraintes relatives aux ressources disponibles pour notre Weeding Planner.
+
+- On note Xa et Xb le nombre de mariages de type A et B à organiser respectivement.
+- Comme énoncé précedemment, l'objectif est de maximiser la fonction suivante :
+$$
+9500\times X_a + 14000\times X_b
+$$
+- Les contraintes sont les suivantes :
+$$
+\begin{align}
+10X_a + 20X_b &\leq 290 \\
+10X_a + 15X_b &\leq 350 \\
+20X_a + 10X_b &\leq 450 \\
+X_a &\geq 0 \\
+X_b &\geq 0
+\end{align}
+$$
+
+La première contrainte est le nombre de jour travaillé par an pour notre Weeding Planner. Il ne peut pas travailler plus de 290 jours par an.
+
+La deuxième contrainte est le nombre d'intervenants à gérer par an. Il ne peut pas gérer plus de 350 intervenants par an.
+
+La troisième contrainte est le nombre de logements à gérer par an. Il ne peut pas gérer plus de 450 logements par an.
+
+La quatrième et cinquième contrainte sont les contraintes de positivité des variables de décision.
+
+\n
+
+Au niveau de la justification de nos contraintes : 
+
+
+### Nombre de jours travaillés par an :
+
+Un salarié travaille environ 230 jours par an (on enlève les jours fériés, 25 jours de congés, 52 samedis et 52 dimanche). 
+
+Partons du principe que notre wedding planner est auto-entrepreneur et qu’il souhaite se lancer. Pour se faire une réputation il doit être investit un maximum dans son projet. Pour cela, il maxisime son temps de travail et travail aussi certains jours fériés et également les samedis. 
+
+Cela ne pose pas de problème car il est passionné par son métier, et ses journées de travail ne sont pas très prenante puisqu’il utilise notre application qui permet d’optimiser toutes ses tâches.
+
+Notre wedding planner travaillera alors environ 290 jours par an.
+
+### Temps de préparation d’un mariage :
+
+Il faut en moyenne 250 heures de travail pour préparer un mariage. Notre weeding planner est doté de notre application qui lui permet de gagner du temps dans ses préparatifs.
+
+
+Un mariage de type A coûte moins cher puisqu’il y a moins de choses à préparer. Comme il y a moins préparatifs, le temps de préparation du mariage est plus court. En moyenne, un mariage se programme
+
+
+- Un mariage de type B coûte plus cher qu’un mariage de type A, puisqu’il y a plus de préparatifs, plus de personnes a accueillir… Ainsi, le temps de préparation d’un mariage de type B est 40 jours.
+
+### Nombre de personnes à gérer par an :
+
+Un mariage de type A accueille 50 personnes. Un mariage de type B accueille 120 personnes. Notre wedding planner ne peut pas gérer plus de 1125 personnes par an par soucis de stockage dans sa base de données.
+
+### Nombre de logements à gérer par an :
+
+Un mariage de type A nécessite 10 logements. Un mariage de type B nécessite 22 logements. Notre wedding planner ne peut pas gérer plus de 10 logements par an par soucis d’organisation.
+
+
+
+
+
+
+```{r}
+# Charger les bibliothèques
+
+# Define the function g(x)
+g <- function(x) {
+  - (9500 / 14000) * x
+}
+
+# Define the function c1(x)
+c1 <- function(x) {
+  (290 / 20) - (10 / 20) * x
+}
+
+# Define the function c2(x)
+c2 <- function(x) {
+  (450 / 10) - (20 / 10) * x
+}
+
+# Define the function c3(x)
+c3 <- function(x) {
+  (350 / 15) - (10 / 15) * x
+}
+
+# Afficher les fonctions, je veux que l'axe des abscisse aille de -20 à 60 et je veux que tu ajoute sur la droite du graphique la correspondance des couleurs avec les fonctions, rajoute une ligne en gras sur le zero en ordonnée et en abscicces, je veux une ligne pleine pas de pointillée
+ggplot(data.frame(x = c(-20, 70)), aes(x)) +
+  stat_function(fun = g, aes(color = "g(x) = -9500/14000*x"), size = 1) +
+  stat_function(fun = c1, aes(color = "c1(x) = 290/20 - 10/20*x"), size = 1) +
+  stat_function(fun = c2, aes(color = "c2(x) = 450/10 - 20/10*x"), size = 1) +
+  stat_function(fun = c3, aes(color = "c3(x) = 350/15 - 10/15*x"), size = 1) +
+  scale_color_manual(values = c("blue", "red", "green", "purple")) +
+  geom_hline(yintercept = 0, linetype = "solid", color = "black", size = 0.3) +
+  geom_vline(xintercept = 0, linetype = "solid", color = "black", size = 0.3) +
+  theme_minimal() +
+  theme(legend.position = "right")
+
+```
+
+
+```{r}
+
+
+# Fonction pour résoudre le modèle avec des coefficients légèrement perturbés
+solve_with_perturbation <- function(perturb_factor) {
+  # Perturber les coefficients des contraintes
+  coef1 <- 10 + rnorm(1, 0, perturb_factor)
+  coef2 <- 20 + rnorm(1, 0, perturb_factor)
+  coef3 <- 20 + rnorm(1, 0, perturb_factor)
+  coef4 <- 10 + rnorm(1, 0, perturb_factor)
+  coef5 <- 10 + rnorm(1, 0, perturb_factor)
+  coef6 <- 15 + rnorm(1, 0, perturb_factor)
+
+  # Résoudre le modèle avec les coefficients perturbés
+  result <- MIPModel() |>
+    add_variable(xA, type = "integer", lb = 0) |>
+    add_variable(xB, type = "integer", lb = 0) |>
+    set_objective(9500 * xA + 14000 * xB, "max") |>
+    add_constraint(coef1 * xA + coef2 * xB <= 290) |>
+    add_constraint(coef3 * xA + coef4 * xB <= 450) |>
+    add_constraint(coef5 * xA + coef6 * xB <= 350) |>
+    solve_model(with_ROI(solver = "glpk"))
+
+  # Extraire les solutions
+  xA_value <- ifelse(!is.na(get_solution(result, xA)), get_solution(result, xA), NA)
+  xB_value <- ifelse(!is.na(get_solution(result, xB)), get_solution(result, xB), NA)
+  
+  return(c(xA = xA_value, xB = xB_value))
+}
+
+# Nombre de simulations bootstrap
+B <- 1000
+# Facteur de perturbation (écart-type de la perturbation)
+perturb_factor <- 1
+
+# Exécuter les simulations bootstrap
+bootstrap_results <- replicate(B, solve_with_perturbation(perturb_factor))
+
+# Convertir les résultats en data frame pour analyse
+bootstrap_df <- as.data.frame(t(bootstrap_results))
+colnames(bootstrap_df) <- c("xA", "xB")
+
+# Afficher un résumé des solutions bootstrap
+summary(bootstrap_df)
+
+
+
+```
+
+```{r}
+
+library(ROI.plugin.glpk)
+library(ompr)
+library(ompr.roi)
+
+result <- MIPModel() |>
+  add_variable(xA, type = "integer", lb = 0) |>
+  add_variable(xB, type = "integer", lb = 0) |>
+  set_objective(9500 * xA + 14000 * xB, "max") |>
+  add_constraint(10 * xA + 20 * xB <= 290) |>
+  add_constraint(20 * xA + 10 * xB <= 450) |>
+  add_constraint(10 * xA + 15 * xB <= 350) |>
+  solve_model(with_ROI(solver = "glpk"))
+
+get_solution(result, xA)
+get_solution(result, xB)
+
+
+```
+
+

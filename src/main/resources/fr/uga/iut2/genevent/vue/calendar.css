@@ -1,0 +1,39 @@
+//------------------------------------------
+// main
+//------------------------------------------
+#maininterface {
+    -fx-min-width: 800px;
+    -fx-min-height: 200px;
+}
+
+//------------------------------------------
+// Barre lateral
+//------------------------------------------
+
+#barrelateral {
+    -fx-background-color: white;
+}
+
+#logo {
+    -fx-background-image: url("img/logo.png");
+    -fx-background-size: 150px 150px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-padding: 10;
+
+}
+
+
+//------------------------------------------
+// Barre haut
+//------------------------------------------
+
+#barrehautLabel {
+    -fx-text-fill: black;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+    -fx-background-color: white;
+    -fx-min-height: 50px;
+
+}
